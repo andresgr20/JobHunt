@@ -55,55 +55,92 @@ class KikBot(Flask):
         messages = messages_from_json(request.json["messages"])
 
         response_messages = []
-
+        job=""
+        location=""
+        
         for message in messages:
             user = self.kik_api.get_user(message.from_user)
             # Check if its the user's first message. Start Chatting messages are sent only once.
             if isinstance(message, StartChattingMessage):
-
+                print("body is " + message_body)
                 response_messages.append(TextMessage(
                     to=message.from_user,
                     chat_id=message.chat_id,
-                    body="Hey {}, how are you?".format(user.first_name),
+                    body="Hey {}, Welcome to Job Hunt! You can search for technical internships here! What type of intership are you looking for?".format(user.first_name),
                     # keyboards are a great way to provide a menu of options for a user to respond with!
-                    keyboards=[SuggestedResponseKeyboard(responses=[TextResponse("Good"), TextResponse("Bad")])]))
+                    keyboards=[SuggestedResponseKeyboard(responses=[TextResponse("Web Developer"), TextResponse("iOS Developer"),
+                                                                        TextResponse("Android Developer"),TextResponse("Full Stack Developer"), TextResponse("BackEnd Developer"),
+                                                                        TextResponse("FrontEnd Developer")])]))
 
             # Check if the user has sent a text message.
             elif isinstance(message, TextMessage):
                 user = self.kik_api.get_user(message.from_user)
                 message_body = message.body.lower()
-
-                if message_body.split()[0] in ["hi", "hello"]:
+                print("body is " + message_body)
+                
+                if message_body.split()[0] in ["hi","hello","hey" ]:
                     response_messages.append(TextMessage(
                         to=message.from_user,
                         chat_id=message.chat_id,
-                        body="Hey {}, what type of intership are you looking for?".format(user.first_name),
-                        keyboards=[SuggestedResponseKeyboard(responses=[TextResponse("Web Development"), TextResponse("iOS Development"),
-                                                                        TextResponse("Android Development"),TextResponse("Full Stack Development"), TextResponse("BackEnd Development"),
-                                                                        TextResponse("FrontEnd Development")])]))
-
-                elif message_body == "Web Development":
+                        body="Hey {}, what type of internship are you looking for?".format(user.first_name),
+                        keyboards=[SuggestedResponseKeyboard(responses=[TextResponse("Web Developer"), TextResponse("iOS Developer"),
+                                                                        TextResponse("Android Developer"),TextResponse("Full Stack Developer"), TextResponse("BackEnd Developer"),
+                                                                        TextResponse("FrontEnd Developer")])]))
+                    
+                elif message_body == "web developer":
                     response_messages.append(TextMessage(
                         to=message.from_user,
                         chat_id=message.chat_id,
-                        body="Where are you looking for?",
+                        body="Where would you like to work?",
                         keyboards=[SuggestedResponseKeyboard(
                             responses=[TextResponse("Sure! I'd love to!"), TextResponse("No Thanks")])]))
-
-               # elif message_body == "bad":
-                #    response_messages.append(TextMessage(
-                 #       to=message.from_user,
-                 #       chat_id=message.chat_id,
-                 #       body="Oh No! :( Wanna see your profile pic?",
-                 #       keyboards=[SuggestedResponseKeyboard(
-                 #           responses=[TextResponse("Yep! I Sure Do!"), TextResponse("No Thank You")])]))
-
-                elif message_body in ["yep! i sure do!", "sure! i'd love to!"]:
+                    
+                elif message_body == "ios developer":
+                    response_messages.append(TextMessage(
+                        to=message.from_user,
+                        chat_id=message.chat_id,
+                        body="Where would you like to work?",
+                        keyboards=[SuggestedResponseKeyboard(
+                            responses=[TextResponse("Yep! I Sure Do!"), TextResponse("No Thank You")])]))   
+                    
+                elif message_body == "full stack developer":
+                    response_messages.append(TextMessage(
+                        to=message.from_user,
+                        chat_id=message.chat_id,
+                        body="Where would you like to work?",
+                        keyboards=[SuggestedResponseKeyboard(
+                            responses=[TextResponse("Yep! I Sure Do!"), TextResponse("No Thank You")])]))
+                    
+                elif message_body == "android developer":
+                    response_messages.append(TextMessage(
+                        to=message.from_user,
+                        chat_id=message.chat_id,
+                        body="Where would you like to work?",
+                        keyboards=[SuggestedResponseKeyboard(
+                            responses=[TextResponse("Yep! I Sure Do!"), TextResponse("No Thank You")])]))                         
+                    
+                elif message_body == "backend developer":
+                    response_messages.append(TextMessage(
+                        to=message.from_user,
+                        chat_id=message.chat_id,
+                        body="Where would you like to work?",
+                        keyboards=[SuggestedResponseKeyboard(
+                            responses=[TextResponse("Yep! I Sure Do!"), TextResponse("No Thank You")])]))     
+                    
+                elif message_body == "frontEnd developer":
+                    response_messages.append(TextMessage(
+                        to=message.from_user,
+                        chat_id=message.chat_id,
+                        body="Where would you like to work?",
+                        keyboards=[SuggestedResponseKeyboard(
+                            responses=[TextResponse("Yep! I Sure Do!"), TextResponse("No Thank You")])]))                                          
+                    
+                elif message_body in ["Web Developer", "sure! i'd love to!"]:
 
                     # Send the user a response along with their profile picture (function definition is below)
                     response_messages += self.profile_pic_check_messages(user, message)
 
-                elif message_body in ["no thanks", "no thank you"]:
+                elif message_body in ["Nope", "no thank you"]:
                     response_messages.append(TextMessage(
                         to=message.from_user,
                         chat_id=message.chat_id,
@@ -112,8 +149,10 @@ class KikBot(Flask):
                     response_messages.append(TextMessage(
                         to=message.from_user,
                         chat_id=message.chat_id,
-                        body="Sorry {}, I didn't quite understand that. How are you?".format(user.first_name),
-                        keyboards=[SuggestedResponseKeyboard(responses=[TextResponse("Good"), TextResponse("Bad")])]))
+                        body="Sorry {}, I didn't quite understand that.".format(user.first_name),
+                        keyboards=[SuggestedResponseKeyboard(responses=[TextResponse("Web Developer"), TextResponse("iOS Developer"),
+                                                                        TextResponse("Android Developer"),TextResponse("Full Stack Developer"), TextResponse("BackEnd Developer"),
+                                                                        TextResponse("FrontEnd Developer")])]))
 
             # If its not a text message, give them another chance to use the suggested responses
             else:
@@ -121,8 +160,10 @@ class KikBot(Flask):
                 response_messages.append(TextMessage(
                     to=message.from_user,
                     chat_id=message.chat_id,
-                    body="Sorry, I didn't quite understand that. How are you, {}?".format(user.first_name),
-                    keyboards=[SuggestedResponseKeyboard(responses=[TextResponse("Good"), TextResponse("Bad")])]))
+                    body="Sorry, I didn't quite understand that. What are you looking for, {}?".format(user.first_name),
+                    keyboards=[SuggestedResponseKeyboard(responses=[TextResponse("Web Developer"), TextResponse("iOS Developer"),
+                                                                        TextResponse("Android Developer"),TextResponse("Full Stack Developer"), TextResponse("BackEnd Developer"),
+                                                                        TextResponse("FrontEnd Developer")])]))
 
             # We're sending a batch of messages. We can send up to 25 messages at a time (with a limit of
             # 5 messages per user).
@@ -131,6 +172,8 @@ class KikBot(Flask):
 
         return Response(status=200)
 
+def lookfor(user,message):
+    
     @staticmethod
     def profile_pic_check_messages(user, message):
         """Function to check if user has a profile picture and returns appropriate messages.
