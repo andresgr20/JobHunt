@@ -76,7 +76,6 @@ class KikBot(Flask):
             elif isinstance(message, TextMessage):
                 user = self.kik_api.get_user(message.from_user)
                 message_body = message.body.lower()
-                print("body is " + message_body)
                 
                 if message_body.split()[0] in ["hi","hello","hey" ]:
                     response_messages.append(TextMessage(
@@ -88,14 +87,16 @@ class KikBot(Flask):
                                                                         TextResponse("FrontEnd Developer")])]))
                     
                 elif message_body == "web developer":
+                    job=message_body
                     response_messages.append(TextMessage(
                         to=message.from_user,
                         chat_id=message.chat_id,
                         body="Where would you like to work?",
                         keyboards=[SuggestedResponseKeyboard(
-                            responses=[TextResponse("Sure! I'd love to!"), TextResponse("No Thanks")])]))
+                            responses=[TextResponse("Toronto,ON"), TextResponse("Waterloo,ON"), TextResponse("California,"), TextResponse("Ottawa,ON"),TextResponse("Austin,TX"), TextResponse("Vancouver"),TextResponse("London"),])]))
                     
                 elif message_body == "ios developer":
+                    job=message_body
                     response_messages.append(TextMessage(
                         to=message.from_user,
                         chat_id=message.chat_id,
@@ -104,6 +105,7 @@ class KikBot(Flask):
                             responses=[TextResponse("Yep! I Sure Do!"), TextResponse("No Thank You")])]))   
                     
                 elif message_body == "full stack developer":
+                    job=message_body
                     response_messages.append(TextMessage(
                         to=message.from_user,
                         chat_id=message.chat_id,
@@ -112,6 +114,7 @@ class KikBot(Flask):
                             responses=[TextResponse("Yep! I Sure Do!"), TextResponse("No Thank You")])]))
                     
                 elif message_body == "android developer":
+                    job=message_body
                     response_messages.append(TextMessage(
                         to=message.from_user,
                         chat_id=message.chat_id,
@@ -120,6 +123,7 @@ class KikBot(Flask):
                             responses=[TextResponse("Yep! I Sure Do!"), TextResponse("No Thank You")])]))                         
                     
                 elif message_body == "backend developer":
+                    job=message_body
                     response_messages.append(TextMessage(
                         to=message.from_user,
                         chat_id=message.chat_id,
@@ -127,7 +131,8 @@ class KikBot(Flask):
                         keyboards=[SuggestedResponseKeyboard(
                             responses=[TextResponse("Yep! I Sure Do!"), TextResponse("No Thank You")])]))     
                     
-                elif message_body == "frontEnd developer":
+                elif message_body == "frontend developer":
+                    job=message_body
                     response_messages.append(TextMessage(
                         to=message.from_user,
                         chat_id=message.chat_id,
