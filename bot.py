@@ -93,7 +93,7 @@ class KikBot(Flask):
                         chat_id=message.chat_id,
                         body="Where would you like to work?",
                         keyboards=[SuggestedResponseKeyboard(
-                            responses=[TextResponse("Toronto,ON"), TextResponse("Waterloo,ON"), TextResponse("California,"), TextResponse("Ottawa,ON"),TextResponse("Austin,TX"), TextResponse("Vancouver"),TextResponse("London"),])]))
+                            responses=[TextResponse("Toronto,ON"), TextResponse("Waterloo,ON"), TextResponse("California"), TextResponse("Ottawa,ON"),TextResponse("Austin,TX"), TextResponse("Vancouver,BC"),TextResponse("London,UK"),])]))
                     
                 elif message_body == "ios developer":
                     job=message_body
@@ -102,7 +102,7 @@ class KikBot(Flask):
                         chat_id=message.chat_id,
                         body="Where would you like to work?",
                         keyboards=[SuggestedResponseKeyboard(
-                            responses=[TextResponse("Yep! I Sure Do!"), TextResponse("No Thank You")])]))   
+                            responses=[TextResponse("Toronto,ON"), TextResponse("Waterloo,ON"), TextResponse("California"), TextResponse("Ottawa,ON"),TextResponse("Austin,TX"), TextResponse("Vancouver,BC"),TextResponse("London,UK"),])]))   
                     
                 elif message_body == "full stack developer":
                     job=message_body
@@ -111,7 +111,7 @@ class KikBot(Flask):
                         chat_id=message.chat_id,
                         body="Where would you like to work?",
                         keyboards=[SuggestedResponseKeyboard(
-                            responses=[TextResponse("Yep! I Sure Do!"), TextResponse("No Thank You")])]))
+                            responses=[TextResponse("Toronto,ON"), TextResponse("Waterloo,ON"), TextResponse("California"), TextResponse("Ottawa,ON"),TextResponse("Austin,TX"), TextResponse("Vancouver,BC"),TextResponse("London,UK"),])]))
                     
                 elif message_body == "android developer":
                     job=message_body
@@ -120,7 +120,7 @@ class KikBot(Flask):
                         chat_id=message.chat_id,
                         body="Where would you like to work?",
                         keyboards=[SuggestedResponseKeyboard(
-                            responses=[TextResponse("Yep! I Sure Do!"), TextResponse("No Thank You")])]))                         
+                            responses=[TextResponse("Toronto,ON"), TextResponse("Waterloo,ON"), TextResponse("California"), TextResponse("Ottawa,ON"),TextResponse("Austin,TX"), TextResponse("Vancouver,BC"),TextResponse("London,UK"),])]))                         
                     
                 elif message_body == "backend developer":
                     job=message_body
@@ -129,7 +129,7 @@ class KikBot(Flask):
                         chat_id=message.chat_id,
                         body="Where would you like to work?",
                         keyboards=[SuggestedResponseKeyboard(
-                            responses=[TextResponse("Yep! I Sure Do!"), TextResponse("No Thank You")])]))     
+                            responses=[TextResponse("Toronto,ON"), TextResponse("Waterloo,ON"), TextResponse("California"), TextResponse("Ottawa,ON"),TextResponse("Austin,TX"), TextResponse("Vancouver,BC"),TextResponse("London,UK"),])]))     
                     
                 elif message_body == "frontend developer":
                     job=message_body
@@ -138,14 +138,14 @@ class KikBot(Flask):
                         chat_id=message.chat_id,
                         body="Where would you like to work?",
                         keyboards=[SuggestedResponseKeyboard(
-                            responses=[TextResponse("Yep! I Sure Do!"), TextResponse("No Thank You")])]))                                          
+                            responses=[TextResponse("Toronto,ON"), TextResponse("Waterloo,ON"), TextResponse("California"), TextResponse("Ottawa,ON"),TextResponse("Austin,TX"), TextResponse("Vancouver,BC"),TextResponse("London,UK"),])]))                                          
                     
                 elif message_body in ["Web Developer", "sure! i'd love to!"]:
 
                     # Send the user a response along with their profile picture (function definition is below)
                     response_messages += self.profile_pic_check_messages(user, message)
 
-                elif message_body in ["Nope", "no thank you"]:
+                elif message_body in ["no", "no thank you", "nope","cancel","bye"]:
                     response_messages.append(TextMessage(
                         to=message.from_user,
                         chat_id=message.chat_id,
