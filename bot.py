@@ -77,24 +77,26 @@ class KikBot(Flask):
                     response_messages.append(TextMessage(
                         to=message.from_user,
                         chat_id=message.chat_id,
-                        body="Hey {}, how are you?".format(user.first_name),
-                        keyboards=[SuggestedResponseKeyboard(responses=[TextResponse("Good"), TextResponse("Bad")])]))
+                        body="Hey {}, what type of intership are you looking for?".format(user.first_name),
+                        keyboards=[SuggestedResponseKeyboard(responses=[TextResponse("Web Development"), TextResponse("iOS Development"),
+                                                                        TextResponse("Android Development"),TextResponse("Full Stack Development"), TextResponse("BackEnd Development"),
+                                                                        TextResponse("FrontEnd Development")])]))
 
-                elif message_body == "good":
+                elif message_body == "Web Development":
                     response_messages.append(TextMessage(
                         to=message.from_user,
                         chat_id=message.chat_id,
-                        body="That's Great! :) Wanna see your profile pic?",
+                        body="Where are you looking for?",
                         keyboards=[SuggestedResponseKeyboard(
                             responses=[TextResponse("Sure! I'd love to!"), TextResponse("No Thanks")])]))
 
-                elif message_body == "bad":
-                    response_messages.append(TextMessage(
-                        to=message.from_user,
-                        chat_id=message.chat_id,
-                        body="Oh No! :( Wanna see your profile pic?",
-                        keyboards=[SuggestedResponseKeyboard(
-                            responses=[TextResponse("Yep! I Sure Do!"), TextResponse("No Thank You")])]))
+               # elif message_body == "bad":
+                #    response_messages.append(TextMessage(
+                 #       to=message.from_user,
+                 #       chat_id=message.chat_id,
+                 #       body="Oh No! :( Wanna see your profile pic?",
+                 #       keyboards=[SuggestedResponseKeyboard(
+                 #           responses=[TextResponse("Yep! I Sure Do!"), TextResponse("No Thank You")])]))
 
                 elif message_body in ["yep! i sure do!", "sure! i'd love to!"]:
 
