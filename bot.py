@@ -210,7 +210,7 @@ class KikBot(Flask):
                     response_messages.append(TextMessage(
                         to=message.from_user,
                         chat_id=message.chat_id,
-                        body= jobSearch(job,location) + " Can I help you with something else?",
+                        body= "It is super cold there! " +jobSearch(job,location) + " Can I help you with something else?",
                         keyboards=[SuggestedResponseKeyboard(
                             responses=[TextResponse("Yes"),TextResponse("No")])]))
                 elif message_body == "mars":
@@ -218,7 +218,7 @@ class KikBot(Flask):
                     response_messages.append(TextMessage(
                         to=message.from_user,
                         chat_id=message.chat_id,
-                        body= jobSearch(job,location) + " Can I help you with something else?",
+                        body= "There is no oxygen there! " + jobSearch(job,location) + " Can I help you with something else?",
                         keyboards=[SuggestedResponseKeyboard(
                             responses=[TextResponse("Yes"),TextResponse("No")])])) 
                     
@@ -227,7 +227,7 @@ class KikBot(Flask):
                     response_messages.append(TextMessage(
                         to=message.from_user,
                         chat_id=message.chat_id,
-                        body= jobSearch(job,location) + " Can I help you with something else?",
+                        body= "Under the sea, under the sea. Ok, Ariel "+ jobSearch(job,location) + " Can I help you with something else?",
                         keyboards=[SuggestedResponseKeyboard(
                             responses=[TextResponse("Yes"),TextResponse("No")])]))  
                     
