@@ -21,6 +21,7 @@ Unless required by applicable law or agreed to in writing, software distributed 
 language governing permissions and limitations under the License.
 
 """
+import urllib2
 
 from flask import Flask, request, Response
 from kik import KikApi, Configuration
@@ -87,58 +88,58 @@ class KikBot(Flask):
                                                                         TextResponse("FrontEnd Developer")])]))
                     
                 elif message_body == "web developer":
-                    job=message_body
+                    job="web developer"
                     response_messages.append(TextMessage(
                         to=message.from_user,
                         chat_id=message.chat_id,
                         body="Where would you like to work?",
                         keyboards=[SuggestedResponseKeyboard(
-                            responses=[TextResponse("Toronto,ON"), TextResponse("Waterloo,ON"), TextResponse("California"), TextResponse("Ottawa,ON"),TextResponse("Austin,TX"), TextResponse("Vancouver,BC"),TextResponse("London,UK")])]))
+                            responses=[TextResponse("Toronto,ON"), TextResponse("Waterloo,ON"), TextResponse("California"), TextResponse("Ottawa,ON"),TextResponse("Austin,TX"), TextResponse("Vancouver,BC"),TextResponse("London,UK"),TextResponse("Himalayas"),TextResponse("Mars"),TextResponse("Atlantis")])]))
                     
                 elif message_body == "ios developer":
-                    job=message_body
+                    job="ios developer"
                     response_messages.append(TextMessage(
                         to=message.from_user,
                         chat_id=message.chat_id,
                         body="Where would you like to work?",
                         keyboards=[SuggestedResponseKeyboard(
-                            responses=[TextResponse("Toronto,ON"), TextResponse("Waterloo,ON"), TextResponse("California"), TextResponse("Ottawa,ON"),TextResponse("Austin,TX"), TextResponse("Vancouver,BC"),TextResponse("London,UK")])]))   
+                            responses=[TextResponse("Toronto,ON"), TextResponse("Waterloo,ON"), TextResponse("California"), TextResponse("Ottawa,ON"),TextResponse("Austin,TX"), TextResponse("Vancouver,BC"),TextResponse("London,UK"),TextResponse("Himalayas"),TextResponse("Mars"),TextResponse("Atlantis")])]))   
                     
                 elif message_body == "full stack developer":
-                    job=message_body
+                    job="full stack developer"
                     response_messages.append(TextMessage(
                         to=message.from_user,
                         chat_id=message.chat_id,
                         body="Where would you like to work?",
                         keyboards=[SuggestedResponseKeyboard(
-                            responses=[TextResponse("Toronto,ON"), TextResponse("Waterloo,ON"), TextResponse("California"), TextResponse("Ottawa,ON"),TextResponse("Austin,TX"), TextResponse("Vancouver,BC"),TextResponse("London,UK")])]))
+                            responses=[TextResponse("Toronto,ON"), TextResponse("Waterloo,ON"), TextResponse("California"), TextResponse("Ottawa,ON"),TextResponse("Austin,TX"), TextResponse("Vancouver,BC"),TextResponse("London,UK"),TextResponse("Himalayas"),TextResponse("Mars"),TextResponse("Atlantis")])]))
                     
                 elif message_body == "android developer":
-                    job=message_body
+                    job="android developer"
                     response_messages.append(TextMessage(
                         to=message.from_user,
                         chat_id=message.chat_id,
                         body="Where would you like to work?",
                         keyboards=[SuggestedResponseKeyboard(
-                            responses=[TextResponse("Toronto,ON"), TextResponse("Waterloo,ON"), TextResponse("California"), TextResponse("Ottawa,ON"),TextResponse("Austin,TX"), TextResponse("Vancouver,BC"),TextResponse("London,UK")])]))                         
+                            responses=[TextResponse("Toronto,ON"), TextResponse("Waterloo,ON"), TextResponse("California"), TextResponse("Ottawa,ON"),TextResponse("Austin,TX"), TextResponse("Vancouver,BC"),TextResponse("London,UK"),TextResponse("Himalayas"),TextResponse("Mars"),TextResponse("Atlantis")])]))                         
                     
                 elif message_body == "backend developer":
-                    job=message_body
+                    job="backend developer"
                     response_messages.append(TextMessage(
                         to=message.from_user,
                         chat_id=message.chat_id,
                         body="Where would you like to work?",
                         keyboards=[SuggestedResponseKeyboard(
-                            responses=[TextResponse("Toronto,ON"), TextResponse("Waterloo,ON"), TextResponse("California"), TextResponse("Ottawa,ON"),TextResponse("Austin,TX"), TextResponse("Vancouver,BC"),TextResponse("London,UK")])]))     
+                            responses=[TextResponse("Toronto,ON"), TextResponse("Waterloo,ON"), TextResponse("California"), TextResponse("Ottawa,ON"),TextResponse("Austin,TX"), TextResponse("Vancouver,BC"),TextResponse("London,UK"),TextResponse("Himalayas"),TextResponse("Mars"),TextResponse("Atlantis")])]))     
                     
                 elif message_body == "frontend developer":
-                    job=message_body
+                    job="frontend developer"
                     response_messages.append(TextMessage(
                         to=message.from_user,
                         chat_id=message.chat_id,
                         body="Where would you like to work?",
                         keyboards=[SuggestedResponseKeyboard(
-                            responses=[TextResponse("Toronto,ON"), TextResponse("Waterloo,ON"), TextResponse("California"), TextResponse("Ottawa,ON"),TextResponse("Austin,TX"), TextResponse("Vancouver,BC"),TextResponse("London,UK")])])) 
+                            responses=[TextResponse("Toronto,ON"), TextResponse("Waterloo,ON"), TextResponse("California"), TextResponse("Ottawa,ON"),TextResponse("Austin,TX"), TextResponse("Vancouver,BC"),TextResponse("London,UK"), TextResponse("Himalayas"),TextResponse("Mars"),TextResponse("Atlantis")])])) 
 
 
                 elif message_body == "toronto,on":
@@ -146,7 +147,7 @@ class KikBot(Flask):
                     response_messages.append(TextMessage(
                         to=message.from_user,
                         chat_id=message.chat_id,
-                        body="The jobs in that area are" + jobSearch(job,location) + ". Do you want to go the website?",
+                        body="Here is the link for the website: " + jobSearch(job,location) + ". Can I help you with something else?",
                         keyboards=[SuggestedResponseKeyboard(
                             responses=[TextResponse("Yes"),TextResponse("No")])])) 
                     
@@ -155,7 +156,7 @@ class KikBot(Flask):
                     response_messages.append(TextMessage(
                         to=message.from_user,
                         chat_id=message.chat_id,
-                        body="The jobs in that area are" + jobSearch(job,location) + ". Do you want to go the website?",
+                        body="Here is the link for the website: " + jobSearch(job,location) + ". Can I help you with something else?",
                         keyboards=[SuggestedResponseKeyboard(
                             responses=[TextResponse("Yes"),TextResponse("No")])])) 
                     
@@ -164,7 +165,7 @@ class KikBot(Flask):
                     response_messages.append(TextMessage(
                         to=message.from_user,
                         chat_id=message.chat_id,
-                        body="The jobs in that area are" + jobSearch(job,location) + ". Do you want to go the website?",
+                        body="Here is the link for the website: " + jobSearch(job,location) + " . Can I help you with something else?",
                         keyboards=[SuggestedResponseKeyboard(
                             responses=[TextResponse("Yes"),TextResponse("No")])]))
                     
@@ -173,7 +174,7 @@ class KikBot(Flask):
                     response_messages.append(TextMessage(
                         to=message.from_user,
                         chat_id=message.chat_id,
-                        body="The jobs in that area are" + jobSearch(job,location) + ". Do you want to go the website?",
+                        body="Here is the link for the website: " + jobSearch(job,location) + ". Can I help you with something else?",
                         keyboards=[SuggestedResponseKeyboard(
                             responses=[TextResponse("Yes"),TextResponse("No")])])) 
                     
@@ -182,7 +183,7 @@ class KikBot(Flask):
                     response_messages.append(TextMessage(
                         to=message.from_user,
                         chat_id=message.chat_id,
-                        body="The jobs in that area are" + jobSearch(job,location) + ". Do you want to go the website?",
+                        body="Here is the link for the website: " + jobSearch(job,location) + ". Can I help you with something else?",
                         keyboards=[SuggestedResponseKeyboard(
                             responses=[TextResponse("Yes"),TextResponse("No")])])) 
                     
@@ -191,7 +192,7 @@ class KikBot(Flask):
                     response_messages.append(TextMessage(
                         to=message.from_user,
                         chat_id=message.chat_id,
-                        body="The jobs in that area are" + jobSearch(job,location) + ". Do you want to go the website?",
+                        body="Here is the link for the website: " + jobSearch(job,location) + ". Can I help you with something else?",
                         keyboards=[SuggestedResponseKeyboard(
                             responses=[TextResponse("Yes"),TextResponse("No")])])) 
                     
@@ -200,12 +201,46 @@ class KikBot(Flask):
                     response_messages.append(TextMessage(
                         to=message.from_user,
                         chat_id=message.chat_id,
-                        body="The jobs in that area are" + jobSearch(job,location) + ". Do you want to go the website?",
+                        body="Here is the link for the website: " + jobSearch(job,location) + ". Can I help you with something else?",
                         keyboards=[SuggestedResponseKeyboard(
-                            responses=[TextResponse("Yes"),TextResponse("No")])]))    
+                            responses=[TextResponse("Yes"),TextResponse("No")])]))
                     
+                elif message_body == "himalayas":
+                    location=message_body
+                    response_messages.append(TextMessage(
+                        to=message.from_user,
+                        chat_id=message.chat_id,
+                        body= jobSearch(job,location) + " Can I help you with something else?",
+                        keyboards=[SuggestedResponseKeyboard(
+                            responses=[TextResponse("Yes"),TextResponse("No")])]))
+                elif message_body == "mars":
+                    location=message_body
+                    response_messages.append(TextMessage(
+                        to=message.from_user,
+                        chat_id=message.chat_id,
+                        body= jobSearch(job,location) + " Can I help you with something else?",
+                        keyboards=[SuggestedResponseKeyboard(
+                            responses=[TextResponse("Yes"),TextResponse("No")])])) 
                     
-                elif message_body in ["Web Developer", "sure! i'd love to!"]:
+                elif message_body == "atlantis":
+                    location=message_body
+                    response_messages.append(TextMessage(
+                        to=message.from_user,
+                        chat_id=message.chat_id,
+                        body= jobSearch(job,location) + " Can I help you with something else?",
+                        keyboards=[SuggestedResponseKeyboard(
+                            responses=[TextResponse("Yes"),TextResponse("No")])]))  
+                    
+                elif message_body == "yes":
+                    response_messages.append(TextMessage(
+                        to=message.from_user,
+                        chat_id=message.chat_id,
+                        body="Perfect! {}, what type of internship are you looking for?".format(user.first_name),
+                        keyboards=[SuggestedResponseKeyboard(responses=[TextResponse("Web Developer"), TextResponse("iOS Developer"),
+                                                                        TextResponse("Android Developer"),TextResponse("Full Stack Developer"), TextResponse("BackEnd Developer"),
+                                                                        TextResponse("FrontEnd Developer")])]))                    
+                    
+                elif message_body in ["WN", "sure! i'd love to!"]:
 
                     # Send the user a response along with their profile picture (function definition is below)
                     response_messages += self.profile_pic_check_messages(user, message)
@@ -242,42 +277,34 @@ class KikBot(Flask):
 
         return Response(status=200)
 
-
+response = urllib2.urlopen("https://ca.indeed.com/")
+response.read();
 
 def jobSearch(job,location):
-    return " potato"
-
-def lookfor(user,message):
-    
-    @staticmethod
-    def profile_pic_check_messages(user, message):
-        """Function to check if user has a profile picture and returns appropriate messages.
-        :param user: Kik User Object (used to acquire the URL the profile picture)
-        :param message: Kik message received by the bot
-        :return: Message
-        """
-
-        messages_to_send = []
-        profile_picture = user.profile_pic_url
-
-        if profile_picture is not None:
-            messages_to_send.append(
-                # Another type of message is the PictureMessage - your bot can send a pic to the user!
-                PictureMessage(
-                    to=message.from_user,
-                    chat_id=message.chat_id,
-                    pic_url=profile_picture
-                ))
-
-            profile_picture_response = "Here's your profile picture!"
-        else:
-            profile_picture_response = "It does not look like you have a profile picture, you should set one"
-
-        messages_to_send.append(
-            TextMessage(to=message.from_user, chat_id=message.chat_id, body=profile_picture_response))
-
-        return messages_to_send
-
+    print(job)  
+    site=""
+    if(location == "london,uk"):
+        site=" https://www.indeed.co.uk/jobs?q=computer+science&l=London%2C+Greater+London "
+        return site
+    elif(location == "california"):
+        site=" https://www.looksharp.com/c/california "
+        return site
+    elif(location == "waterloo,on"):
+        site="https://ca.indeed.com/Computer-Science-Science-jobs-in-Waterloo,-ON "
+        return site
+    elif (location == "toronto,on"):
+        site=" https://ca.indeed.com/jobs?q=Computer+Science+Internship&l=Toronto%2C+ON "
+        return site        
+    elif(location =="vancouver,bc"):
+        site=" https://ca.indeed.com/jobs?q=Computer+Science+Internship&l=Vancouver%2C+BC "
+        return site        
+    elif(location =="austin,tx"):
+        site=" https://www.looksharp.com/c/austin-tx "
+        return site        
+    elif(location == "ottawa,tx"):
+        site=" https://ca.indeed.com/jobs?q=Computer+Science+Internship&l=Ottawa%2C+ON "
+        return site        
+    return "Sorry, I coulnd't find a job for that location. " 
 
 if __name__ == "__main__":
     """ Main program """
@@ -285,6 +312,6 @@ if __name__ == "__main__":
     # For simplicity, we're going to set_configuration on startup. However, this really only needs to happen once
     # or if the configuration changes. In a production setting, you would only issue this call if you need to change
     # the configuration, and not every time the bot starts.
-    kik.set_configuration(Configuration(webhook='http://ef64e527.ngrok.io/incoming'))
+    kik.set_configuration(Configuration(webhook='https://965cb5ef.ngrok.io/incoming'))
     app = KikBot(kik, __name__)
     app.run(port=8080, host='127.0.0.1', debug=True)
